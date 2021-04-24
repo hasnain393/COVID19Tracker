@@ -7,7 +7,10 @@ const url = "https://api.covid19india.org/data.json";
   
  
 const app=express();
-app.use(express.static( "public"));
+app.use(express.static("."))
+// app.use(express.static("public"));
+// app.use(express.static( path.join(__dirname,"public")));
+//https://www.udemy.com/course/the-complete-web-development-bootcamp/learn/lecture/12384582#questions/6128758
 app.set('view engine', 'ejs');
  
 app.get("/",(req,res)=>{
@@ -38,7 +41,7 @@ app.get("/",(req,res)=>{
  
      
     //   console.log(data);
-      res.render("result",{data});
+      res.render("table",{data});
     })
     .catch(error => {
       console.log(error);
